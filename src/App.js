@@ -4,6 +4,7 @@ import Navbar from './components/navbar';
 import CreateBlog from './components/blog/CreateBlog';
 import BlogDetails from './components/blog/BlogDetails';
 import HomePage from './components/site/HomePage';
+import Dashboard from './components/dashboard/Dashboard';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
      		<Navbar />
     		<Switch>
     			<Route exact path='/' component={HomePage}/>
+    			<Route path='/dashboard' component={Dashboard}/>
     			<Route path='/blog/:id' component={BlogDetails}/>
     			<Route path='/create' component={CreateBlog}/>
     		</Switch>

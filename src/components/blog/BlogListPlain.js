@@ -25,10 +25,8 @@ class BlogListPlain extends Component {
 				<div className="blog-list-plain">
 					<ul className="list-group"> 
 						{ blogs.slice(0, this.state.visible).map( item => (
-							<li key={ item.id } 
-								className="list-group-item fade-in" 
-								onClick={ () => this.handleDelete( item.id ) }>
-									{ item.title }
+							<li key={ item.id } className="list-group-item fade-in" >
+								{ item.title }
 							</li>
 						)) }
 					</ul>

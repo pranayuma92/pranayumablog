@@ -13,7 +13,7 @@ const Menu = (props) => {
 		    <ul>
 		      <li><Link to='/'>Home</Link></li>
 		      <li><Link to='/create'>Create new blog</Link></li>
-		      <li><a href="#work">Work</a></li>
+		      <li><Link to='/dashboard'>Dashboard</Link></li>
 		      <li><a href="#contact">Contact</a></li>
 		    </ul>
 		  </nav>
