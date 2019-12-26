@@ -15,7 +15,7 @@ class BlogListPlain extends Component {
 	    this.setState((prev) => {
 	      	return {visible: prev.visible + 10};
 	    });
-	  }
+	 }
 
 	render(){
 		const { blogs } = this.props;

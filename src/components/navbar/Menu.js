@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Menu = (props) => {
 	let open = '';
@@ -10,10 +11,10 @@ const Menu = (props) => {
        	<div className={ `overlay ${open}` } onMouseDown={props.handleMouseDown} id="overlay">
 		  <nav className="overlay-menu">
 		    <ul>
-		      <li><a href="#">Home</a></li>
-		      <li><a href="#">About</a></li>
-		      <li><a href="#">Work</a></li>
-		      <li><a href="#">Contact</a></li>
+		      <li><Link to='/'>Home</Link></li>
+		      <li><Link to='/create'>Create new blog</Link></li>
+		      <li><a href="#work">Work</a></li>
+		      <li><a href="#contact">Contact</a></li>
 		    </ul>
 		  </nav>
 		</div>

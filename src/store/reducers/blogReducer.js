@@ -3,6 +3,7 @@ const initState = {}
 const blogReducer = (state = initState, action) => {
 	switch(action.type){
 		case 'ADD_NEW_BLOG' :
+			alert('Blog added');
 			console.log('Blog added', action.post)
 			return state;
 		case 'ADD_NEW_BLOG_ERR' :

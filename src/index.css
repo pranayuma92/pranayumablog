@@ -7,7 +7,7 @@
 /*# sourceMappingURL=bootstrap.min.css.map */
 
 html,body {
-	font-family: 'Montserrat';
+	font-family: 'Poppins';
 }
 
 @keyframes fadeIn {
@@ -18,6 +18,7 @@ html,body {
     opacity: 1;
   }
 }
+
 .fade-in {
   animation: fadeIn 0.5s ease-in;
 }
@@ -36,18 +37,34 @@ section {
     width: 100%;
 }*/
 
-.bg-img {
+/*.bg-img {
 	background: url('./assets/bg.jpg');
 	background-position: center;
     background-repeat: no-repeat;
+}*/
+
+svg.navbar-nav-svg {
+    height: 25px;
 }
 
 .bg-opaque {
 	background: transparent !important;
 }
 
+.bg-white {
+	padding-top: 35px;
+	padding-bottom: 35px;
+}
+
 .home h1 {
 	font-weight: bold;
+	font-family: 'Vollkorn';
+	font-size: 3rem;
+}
+
+h3.card-title {
+    font-family: Vollkorn;
+    font-weight: 900;
 }
 
 a.nav-link {
@@ -72,10 +89,27 @@ a.nav-link {
 #masonry .card {  
   	display: inline-block;
     background: #fff;
-    padding: 1em;
+    /*padding: 1em;*/
     margin: 0 0 1.5em;
     width: 100%;
 	-webkit-transition:1s ease all;
+}
+
+.btn.btn-primary {
+	background: transparent;
+    color: #000;
+    border: 1px solid #212529;
+    border-radius: 0;
+    margin: 30px 0;
+}
+
+.ql-toolbar.ql-snow + .ql-container.ql-snow {
+	min-height: 250px;
+}
+
+input.form-control.input-title {
+    margin-bottom: 20px;
+    border-radius: 0;
 }
 
 /*#flyoutMenu {
@@ -127,18 +161,20 @@ a.nav-link {
 .button_container.active .middle {
   opacity: 0;
   background: #FFF;
+  width: 100%;
 }
 
 .button_container.active .bottom {
   -webkit-transform: translateY(-11px) translateX(0) rotate(-45deg);
           transform: translateY(-11px) translateX(0) rotate(-45deg);
   background: #FFF;
+  width: 100%
 }
 
 .button_container span {
-  background: #FF5252;
+  background: #212529;
   border: none;
-  height: 5px;
+  height: 2px;
   width: 100%;
   position: absolute;
   top: 0;
@@ -147,18 +183,25 @@ a.nav-link {
   cursor: pointer;
 }
 
+.button_container .middle {
+	width: 70%;
+}
+
+.button_container .bottom {
+	width: 50%;
+}
+
 .button_container span:nth-of-type(2) {
-  top: 11px;
+  top: 10px;
 }
 
 .button_container span:nth-of-type(3) {
-  top: 22px;
+  top: 20px;
 }
-
 
 .overlay {
   position: fixed;
-  background: #FF5252;
+  background: #212529;
   top: 0;
   left: 0;
   width: 100%;
@@ -171,7 +214,7 @@ a.nav-link {
 }
 
 .overlay.open {
-  opacity: .9;
+  opacity: 1;
   visibility: visible;
   height: 100%;
 }
@@ -234,6 +277,7 @@ a.nav-link {
   color: #FFF;
   text-decoration: none;
   overflow: hidden;
+  font-family: 'Vollkorn';
 }
 
 .overlay ul li a:hover:after, .overlay ul li a:focus:after, .overlay ul li a:active:after {
@@ -275,6 +319,13 @@ a.nav-link {
   }
 }
 /* End Menu */
+
+
+.blog-details article img {
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
 
 
 @media (min-width: 992px) {
