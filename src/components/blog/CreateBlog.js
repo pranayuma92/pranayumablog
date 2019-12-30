@@ -67,7 +67,7 @@ class CreateBlog extends Component {
 						</div>
 						<div className="col-md-4">
 							<div className="card">
-								<img className="card-img-top" src="https://place-hold.it/300x150" alt="Card image cap" />
+								<img className="card-img-top" src="https://place-hold.it/300x150" alt="caption alternate" />
 							</div>
 							<button onClick={this.handlePublish} className="btn btn-primary">Publish</button>
 						</div>

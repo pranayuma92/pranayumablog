@@ -29,7 +29,7 @@ class HomePage extends Component {
 			    		{ blogs && blogs.map( item => (
 			    			<Link to={`/blog/${item.id}`} >
 					    		<div className="card fade-in" key={item.id}>
-					    	  		<img className="card-img-top" src="https://place-hold.it/300x150" alt="Card image cap" />
+					    	  		<img className="card-img-top" src="https://place-hold.it/300x150" alt="alternate" />
 							  		<div className="card-body">
 							    		<h3 className="card-title">{item.title}</h3>
 							    		<h6 className="card-subtitle mb-2 text-muted">Category</h6>
