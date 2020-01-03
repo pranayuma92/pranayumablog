@@ -11,6 +11,7 @@ const BlogDetails = (props) => {
 			<header className="bg-white home container">
 		      	<div className="container text-center">
 		        	<h1>{ blog && blog.title }</h1>
+		      		<img src={ blog && blog.cover } />
 		      	</div>
 		    </header>
 		    <div className="container">
@@ -27,7 +28,6 @@ const mapStateToProps = (state, props) => {
 	return {
 		blog: blog
 	}
-
 }
 
 export default compose(

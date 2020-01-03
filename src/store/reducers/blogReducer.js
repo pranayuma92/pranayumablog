@@ -15,6 +15,12 @@ const blogReducer = (state = initState, action) => {
 		case 'DELETE_BLOG_ERR' :
 			console.log('Error while deleting blog', action.err)
 			return state;
+		case 'UPDATE_BLOG' :
+			console.log('Blog updated', action.item)
+			return state;
+		case 'UPDATE_BLOG_ERR' :
+			console.log('Error while updating blog', action.err)
+			return state;
 		default: 
 			return state;
 	}

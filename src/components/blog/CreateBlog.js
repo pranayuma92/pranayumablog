@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addNewBlog } from '../../store/actions/blogActions';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import Editor from './Editor';
+import { Redirect } from 'react-router-dom';
 
 class CreateBlog extends Component {
 	state = {
 		title: '',
-		content : ''
+		content : '',
+		cover: ''
 	}
 
 	handleChange = (value) => {
@@ -18,35 +19,28 @@ class CreateBlog extends Component {
   		this.setState({ [ev.target.id] : ev.target.value })
   	}
 
+  	handleImageChange = (e) => {
+	    const self = this
+	    e.preventDefault();
+	    let file = e.target.files[0];
+	    let reader = new FileReader();
+	    reader.readAsDataURL(file);
+	    reader.onload = () => {
+	      	self.setState({
+	        	cover: reader.result
+	      	});
+	    };
+	}
+
   	handlePublish = () => {
-		this.props.addNewBlog(this.state)
-		//console.log('data', this.state)
+		this.props.addNewBlog(this.state, () => {
+			this.props.history.push('/dashboard');
+		})
 	}
 
 	render(){
-		console.log(this.props)
-		const modules = {
-			toolbar: [
-				[{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-			    [{ 'font': [] }],
-			    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-			    [{ 'align': [] }],
-			    [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-			    ['link', 'image', 'video'],
-			    ['clean']
-			],
-			clipboard: {
-			    matchVisual: false,
-			}
-		}
-
-		const formats = [
-		  'header', 'font', 'size',
-		  'bold', 'italic', 'underline', 'strike', 'blockquote',
-		  'list', 'bullet', 'indent',
-		  'link', 'image', 'video'
-		]
-
+		const { auth } = this.props;
+		if(!auth.uid) return <Redirect to='/signin' />
 		return (
 			<div className="fade-in">
 				<header className="bg-white home container">
@@ -54,32 +48,24 @@ class CreateBlog extends Component {
 			        	<h1>Create New Blog</h1>
 			      	</div>
 			    </header>
-				<div className="container">
-					<div className="row">
-						<div className="col-md-8">
-							<input id="title" onChange={this.handleInput} className="form-control input-title" type="text" placeholder="Title..."/>
-							<ReactQuill 
-								value={this.state.content} 
-								onChange={this.handleChange} 
-								modules={modules} 
-								formats={formats} 
-								placeholder={'Content...'} />
-						</div>
-						<div className="col-md-4">
-							<div className="card">
-								<img className="card-img-top" src="https://place-hold.it/300x150" alt="caption alternate" />
-							</div>
-							<button onClick={this.handlePublish} className="btn btn-primary">Publish</button>
-						</div>
-					</div>
-				</div>
+				<Editor create
+					content={this.state.content}
+					cover={this.state.cover}
+					handleContent={this.handleChange}
+					handleCover={this.handleImageChange}
+					handleTitle={this.handleInput}
+					handlePublish={this.handlePublish} />
 			</div>
 		)
 	}
 }
 
-const mapDispatchToProps = (dispatch) => ({
-	addNewBlog : post => dispatch(addNewBlog(post))
+const mapStateToProps = state => ({
+	auth: state.firebase.auth
+})
+
+const mapDispatchToProps = dispatch => ({
+	addNewBlog : (post, callback) => dispatch(addNewBlog(post, callback))
 })
 
 export default connect(null, mapDispatchToProps)(CreateBlog);

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { deleteBlog } from '../../store/actions/blogActions';
 import Modal from '../Modal';
@@ -42,7 +43,8 @@ class BlogListPlain extends Component {
 							<li key={ item.id } className="list-group-item fade-in" >
 								<p>{ item.title }</p>
 								<div>
-									<span>Edit</span>
+									<span><Link to={`/blog/${item.id}`}>View</Link></span>
+									<span><Link to={`/edit/${item.id}`}>Edit</Link></span>
 									<span onClick={() => this.handleDelete(item.id)}>Delete</span>
 									<span>Move to draft</span>
 								</div>
@@ -50,7 +52,7 @@ class BlogListPlain extends Component {
 						)) }
 					</ul>
 					{ this.state.visible < blogs.length &&
-			            <button onClick={this.loadMore} type="button" className="load-more">Load more</button>
+			            <button onClick={this.loadMore} type="button" className="load-more btn btn-primary">Load more</button>
 			        }
 					<Modal
 	                    className="modal"

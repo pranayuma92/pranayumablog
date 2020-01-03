@@ -204,11 +204,11 @@ input.form-control.input-title {
   background: #212529;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 0%;
+  width: 0%;
+  height: 100%;
   opacity: 0;
   visibility: hidden;
-  transition: opacity .35s, visibility .35s, height .35s;
+  transition: opacity .35s, visibility .35s, width .35s;
   overflow: hidden;
   z-index: 1;
 }
@@ -216,7 +216,7 @@ input.form-control.input-title {
 .overlay.open {
   opacity: 1;
   visibility: visible;
-  height: 100%;
+  width: 100%;
 }
 
 .overlay.open li {
@@ -300,22 +300,22 @@ input.form-control.input-title {
 @-webkit-keyframes fadeInRight {
   0% {
     opacity: 0;
-    left: 20%;
+    right: 20%;
   }
   100% {
     opacity: 1;
-    left: 0;
+    right: 0;
   }
 }
 
 @keyframes fadeInRight {
   0% {
     opacity: 0;
-    left: 20%;
+    right: 20%;
   }
   100% {
     opacity: 1;
-    left: 0;
+    right: 0;
   }
 }
 /* End Menu */
@@ -425,12 +425,62 @@ li.list-group-item span {
     cursor: pointer; 
 }
 
-li.list-group-item span:hover {
+li.list-group-item span a {
+	text-decoration: none;
+	color: #b1b1b1;
+}
+
+li.list-group-item span:hover,
+li.list-group-item span a:hover {
     color: #21252f; 
 }
 
 li.list-group-item span:last-child {
 	margin-right: 0;
+}
+
+.footer-wrapper {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.img-placeholder {
+	height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background: #aaaaaa;
+    cursor: pointer;
+}
+
+.img-placeholder img {
+	width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#choose {
+	display: none;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.blog-details header img {
+    width: 80%;
+    height: auto;
+    object-fit: contain;
+}
+
+.blog-details h1 {
+	margin-bottom: 30px;
+}
+
+.blog-details pre {
+    background: #ececec;
+    padding: 25px;
+    font-size: 14px;
 }
 
 @media (min-width: 992px) {

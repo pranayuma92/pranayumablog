@@ -2,11 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import BlogListPlain from '../blog/BlogListPlain';
 
 const Dashboard = (props) =>{ 
-	const { blogs } = props;
+	const { blogs, auth } = props;
+	if(!auth.uid) return <Redirect to='/signin' />
+		
 	let count = '0';
 
 	if(blogs){
@@ -42,6 +44,7 @@ const Dashboard = (props) =>{
 
 const mapStateToProps = state => ({
 	blogs : state.firestore.ordered.blogs,
+	auth: state.firebase.auth
 })
 
 export default compose(
