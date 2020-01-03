@@ -37,7 +37,9 @@ class EditBlog extends Component {
 	}
 
   	handleUpdate = () => {
-		this.props.updateBlog(this.state)
+		this.props.updateBlog(this.state, () => {
+			this.props.history.push('/dashboard');
+		})
 	}
 
 	render(){
@@ -75,7 +77,7 @@ const mapStateToProps = (state, props) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	updateBlog : item => dispatch(updateBlog(item))
+	updateBlog : (item, callback) => dispatch(updateBlog(item, callback))
 })
 
 export default compose(

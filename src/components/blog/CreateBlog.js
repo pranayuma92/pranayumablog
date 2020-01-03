@@ -68,4 +68,4 @@ const mapDispatchToProps = dispatch => ({
 	addNewBlog : (post, callback) => dispatch(addNewBlog(post, callback))
 })
 
-export default connect(null, mapDispatchToProps)(CreateBlog);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateBlog);

@@ -21,6 +21,7 @@ class SignIn extends Component {
 	render(){
 		const { auth } = this.props;
 		if(auth.uid) return <Redirect to='/dashboard' />
+			
 		return (
 			<div className="fade-in">
 				<header className="bg-white home container">

@@ -5,11 +5,19 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { Link } from 'react-router-dom';
 
 class HomePage extends Component {
-	state = {}
+	state = {
+		visible: 6
+	}
 
 	removeHtmlTag = (html) => {
 		const result = html.replace(/<[^>]+>/g, '');
 		return result.substring(0, 250);
+	}
+
+	loadMore = () => {
+	    this.setState((prev) => {
+	      	return {visible: prev.visible + 6};
+	    });
 	}
 
 	render(){
@@ -24,9 +32,9 @@ class HomePage extends Component {
 			        <p className="lead">I am Pandu Pranayuma</p>
 			      </div>
 			    </header>
-			    <div className="container">
+			    <div className="container homepage">
 			    	<div id="masonry">
-			    		{ blogs && blogs.map( item => (
+			    		{ blogs && blogs.slice(0, this.state.visible).map( item => (
 			    			<Link to={`/blog/${item.id}`} >
 					    		<div className="card fade-in" key={item.id}>
 					    	  		<img className="card-img-top" src={item.cover ? item.cover : `https://place-hold.it/300x150`} alt="alternate" />
@@ -38,8 +46,10 @@ class HomePage extends Component {
 								</div>
 							</Link>
 			    		))}
-
 					</div>
+					{ this.state.visible < (blogs && blogs.length) &&
+			            <button onClick={this.loadMore} type="button" className="load-more btn btn-primary">Load more</button>
+			        }
 			    </div>
 		    </div>
 		)

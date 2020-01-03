@@ -28,7 +28,7 @@ const deleteBlog = id => {
 	}
 }
 
-const updateBlog = item => {
+const updateBlog = (item, callback) => {
 	return (dispatch, getState, { getFirestore }) => {
 		const firestore = getFirestore();
 		firestore.collection('blogs').doc(item.id).update({
@@ -38,6 +38,9 @@ const updateBlog = item => {
 		})
 		.then(() => {
 			dispatch({ type: 'UPDATE_BLOG', item })
+		})
+		.then(() => {
+			callback()
 		})
 		.catch(err => {
 			dispatch({ type: 'UPDATE_BLOG_ERR', err })
